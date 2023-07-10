@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,django
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,macos,django
+# Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,venv,django
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,venv,django
 
 ### Django ###
 *.log
@@ -202,6 +202,18 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+pip-selfcheck.json
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -221,4 +233,4 @@ Temporary Items
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,django
+# End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,venv,django
