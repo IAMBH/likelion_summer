@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,venv,django
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,venv,django
+# Created by https://www.toptal.com/developers/gitignore/api/macos,venv,visualstudiocode,django
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,venv,visualstudiocode,django
 
 ### Django ###
 *.log
@@ -7,6 +7,8 @@
 *.pyc
 __pycache__/
 local_settings.py
+db.sqlite3
+db.sqlite3-journal
 media
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
@@ -233,4 +235,4 @@ pip-selfcheck.json
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,venv,django
+# End of https://www.toptal.com/developers/gitignore/api/macos,venv,visualstudiocode,django
