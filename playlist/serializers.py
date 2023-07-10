@@ -1,10 +1,14 @@
 from rest_framework import serializers
-from .models import Track, Album
+from .models import Track, Album, Tag
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = '__all__'
 
 class AlbumSerializer(serializers.ModelSerializer):
     id = serializers.CharField(read_only=True)
     tracks = serializers.SerializerMethodField(read_only=True)
-
     def get_tracks(self, instance):
         track_list = []
         serializer = TrackSerializer(instance.tracks, many=True)
@@ -12,10 +16,18 @@ class AlbumSerializer(serializers.ModelSerializer):
             track_list.append(d['title'])
         return track_list
     
+    tag = serializers.SerializerMethodField(read_only=True)
+    def get_tag(self, instance):
+        tag_list = []
+        tags = instance.tag.all()
+        for t in tags:
+            tag_list.append(t.name)
+        return tag_list
+    
     class Meta:
         model = Album
         fields = '__all__'
-        fields = ['id','artist','title','released','description','tracks']
+        fields = ['id','artist','title','released','description','tracks','tag']
         # read_only_fields = ['id']
 
 class TrackSerializer(serializers.ModelSerializer):
