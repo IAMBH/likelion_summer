@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from .models import Track, Album, Tag
+from .models import Track, Album, Tag, Image
 from .serializers import AlbumSerializer, TrackSerializer, TagSerializer
 
 from django.shortcuts import get_object_or_404
@@ -33,6 +33,11 @@ def album_list_create(request):
                     tag.save()
                 album = get_object_or_404(Album, id=serializer.data['id'])
                 album.tag.add(tag)
+
+            image_data = request.FILES.getlist('image')
+            for i in image_data:
+                Image.objects.create(album=album, image=i)
+
             album.save()
             return Response(data=serializer.data)
 
@@ -92,7 +97,7 @@ def track_list_create(request, album_id):
         return Response(serializer.data)
     
 @api_view(['GET','PATCH','DELETE'])
-def track_detail_update_delete(request, track_id):
+def track_detail_update_delete(request, album_id, track_id):
     track = get_object_or_404(Track, id=track_id)
     # track = Track.objects.filter(album=album, id=track_id)
     if request.method == 'GET':
